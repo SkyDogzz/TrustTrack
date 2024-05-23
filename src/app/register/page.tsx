@@ -83,7 +83,7 @@ export default function RegisterPage() {
                     />
                     {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
                 </div>
-                <button type="submit" className='p-2 bg-blue-500 text-white rounded-md dark:bg-blue-900'>Register</button>
+                <button type="submit" className="p-2 bg-blue-500 text-white rounded-md dark:bg-blue-900 hover:bg-blue-600 dark:hover:bg-blue-800 active:bg-blue-700 dark:active:bg-blue-700">Register</button>
             </form>
         </div>
     );
