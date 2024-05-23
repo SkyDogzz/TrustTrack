@@ -9,7 +9,7 @@ export default function Header() {
     return (
         <header className="flex justify-around text-black dark:text-white">
             <Link href="/">
-                <h1 className="text-2xl p-4 font-bold">NextJS Boilerplate</h1>
+                <h1 className="text-2xl p-4 font-bold">Trust Track</h1>
             </Link>
             <nav>
                 <ul className="flex items-center justify-center h-full gap-10 text-xl font-semibold">

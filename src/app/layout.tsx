@@ -11,8 +11,8 @@ import Header from "@/components/Header";
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "NextJS Boilerplate",
-  description: "NextJS Boilerplate using TypeScript, TailwindCSS, NextAuth, Postgres database, Prisma ORM, daisyUI, and more.",
+  title: "Trust Track",
+  description: "Trust Track, a simple app to track your trust.",
 };
 
 export default async function RootLayout({
