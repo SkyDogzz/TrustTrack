@@ -1,0 +1,62 @@
+{
+    "monthly": [
+        {
+            "title": "Gratuit",
+            "price": "0",
+            "features": [
+                "Surveillance des avis en temps réel",
+                "Alertes instantanées",
+                "Réponses rapides"
+            ]
+        },
+        {
+            "title": "Pro",
+            "price": "49",
+            "features": [
+                "Toutes les fonctionnalités Gratuites",
+                "Analyse de sentiment",
+                "Rapports détaillés"
+            ],
+            "popular": true
+        },
+        {
+            "title": "Entreprise",
+            "price": "99",
+            "features": [
+                "Toutes les fonctionnalités Pro",
+                "Support prioritaire",
+                "Personnalisation avancée"
+            ]
+        }
+    ],
+    "annual": [
+        {
+            "title": "Gratuit",
+            "price": "0",
+            "features": [
+                "Surveillance des avis en temps réel",
+                "Alertes instantanées",
+                "Réponses rapides"
+            ]
+        },
+        {
+            "title": "Pro",
+            "price": "490",
+            "features": [
+                "Toutes les fonctionnalités Gratuites",
+                "Analyse de sentiment",
+                "Rapports détaillés"
+            ],
+            "popular": true
+        },
+        {
+            "title": "Entreprise",
+            "price": "990",
+            "features": [
+                "Toutes les fonctionnalités Pro",
+                "Support prioritaire",
+                "Personnalisation avancée"
+            ]
+        }
+    ]
+}
