@@ -66,6 +66,11 @@ export default NextAuth({
             if (session.user && token.id) {
                 session.user.id = token.id as string;
             }
+
+            const subscription = await getUserSubscription(session.user.id);
+            session.user.plan = subscription.plan;
+            session.user.price = subscription.price;
+
             return session;
         }
     },
@@ -73,3 +78,10 @@ export default NextAuth({
         signIn: "/login",
     }
 });
+
+async function getUserSubscription(userId: string) {
+    return {
+      plan: "Premium",
+      price: "29.99",
+    };
+  }
