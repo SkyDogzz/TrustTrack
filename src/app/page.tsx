@@ -2,6 +2,7 @@ import Demo from "@/components/Demo"
 import Fonctionnality from "@/components/Fonctionnality"
 import Hero from "@/components/Hero"
 import Footer from "@/components/Footer"
+import Pricing from "@/components/Pricing"
 
 export default function HomePage() {
 
@@ -10,6 +11,7 @@ export default function HomePage() {
       <Hero />
       <Fonctionnality />
       <Demo />
+      <Pricing />
       <Footer />
     </>
   )
