@@ -13,20 +13,31 @@ export default function Header() {
             </Link>
             <nav>
                 <ul className="flex items-center justify-center h-full gap-10 text-xl font-semibold">
-                    <li>
-                        <Link href="/">Home</Link>
-                    </li>
                     {status === "authenticated" ? (
-                        <li>
-                            <button onClick={() => signOut()}>Sign Out</button>
-                        </li>
+                        <>
+                            <li>
+                                <Link href="/dashboard">Dashboard</Link>
+                            </li>
+                            <li>
+                                <Link href="/profil">Profil</Link>
+                            </li>
+                            <li>
+                                <button onClick={() => signOut()}>Déconnexion</button>
+                            </li>
+                        </>
                     ) : (
                         <>
                             <li>
-                                <Link href="/login">Sign In</Link>
+                                <Link href="/">Accueil</Link>
                             </li>
                             <li>
-                                <Link href="/register">Register</Link>
+                                <Link href="/#features">Fonctionnalités</Link>
+                            </li>
+                            <li>
+                                <Link href="/login">Se connecter</Link>
+                            </li>
+                            <li>
+                                <Link href="/register">S'inscrire</Link>
                             </li>
                         </>
                     )}
