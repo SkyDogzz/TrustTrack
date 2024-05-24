@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Fonctionnality() {
     return (
-        <div className="text-black dark:text-white max-w-7xl mx-auto">
+        <div className="text-black dark:text-white max-w-7xl mx-auto mb-20">
             <div className="container mx-auto p-4 mt-8">
                 <div>
                     <h2 className="text-5xl font-bold text-center">Surveillance des Avis en Temps Réel</h2>

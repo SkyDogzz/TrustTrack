@@ -2,33 +2,41 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col justify-center text-black dark:text-white">
+        <footer className="border-t-2 border-gray-200 dark:border-gray-800 p-20">
             <nav>
-                <ul className="flex items-center justify-center h-full gap-10 text-xl font-semibold">
+                <ul className="flex justify-center gap-10">
                     <li>
-                        <Link href="/about">À propos</Link>
+                        <Link href="/about">
+                            <div className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white">À propos</div>
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/contact">Contact</Link>
+                        <Link href="/contact">
+                            <div className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white">Contact</div>
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/cgu">Politique de confidentialité</Link>
+                        <Link href="/cgu">
+                            <div className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white">Politique de confidentialité</div>
+                        </Link>
                     </li>
                 </ul>
             </nav>
-            <p className="text-center text-lg">Address: placeholder</p>
-            <p className="text-center text-lg">Email: placeholder</p>
-            <div className="flex justify-center gap-10 items-end">
-                <p>Réseaux sociaux</p>
-                <ul className="flex items-center justify-center h-full gap-10 text-xl font-semibold">
+            <div className="mt-4 text-center">
+                <p className="text-gray-400 dark:text-gray-400">Address: placeholder</p>
+                <p className="text-gray-400 dark:text-gray-400">Email: placeholder</p>
+            </div>
+            <div className="mt-4 text-center">
+                <p className="text-black dark:text-white">Réseaux sociaux</p>
+                <ul className="flex justify-center space-x-4">
                     <li>
-                        <Link href="https://www.facebook.com">Facebook</Link>
+                        <Link className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white" href="https://www.facebook.com">Facebook</Link>
                     </li>
                     <li>
-                        <Link href="https://www.twitter.com">Twitter</Link>
+                        <Link className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white" href="https://www.twitter.com">Twitter</Link>
                     </li>
                     <li>
-                        <Link href="https://www.linkedin.com">LinkedIn</Link>
+                        <Link className="text-gray-400 dark:text-gray-400 hover:text-black dark:hover:text-white" href="https://www.linkedin.com">LinkedIn</Link>
                     </li>
                 </ul>
             </div>
