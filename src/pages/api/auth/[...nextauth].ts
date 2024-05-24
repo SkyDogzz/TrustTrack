@@ -11,6 +11,7 @@ const prisma = new PrismaClient();
 
 interface User {
     id: string;
+    name: string;
     email: string;
 }
 
@@ -44,7 +45,7 @@ export default NextAuth({
                     }
                 });
                 if (user && await bcrypt.compare(credentials.password, user.password)) {
-                    return { id: user.id.toString(), email: user.email } as User;
+                    return { id: user.id.toString(), email: user.email, name: user.name };
                 }
                 return null;
             }
