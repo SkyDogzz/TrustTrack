@@ -5,14 +5,14 @@ import axios from 'axios';
 interface SubscriptionFormProps {
     planType: string;
     planName: string;
+    email: string | undefined;
 }
 
-export default function SubscriptionForm({ planType, planName }: SubscriptionFormProps) {
+export default function SubscriptionForm({ planType, planName, email }: SubscriptionFormProps) {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-    const [email, setEmail] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -60,13 +60,6 @@ export default function SubscriptionForm({ planType, planName }: SubscriptionFor
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-            />
             <CardElement />
             <button type="submit" disabled={!stripe || loading}>
                 {loading ? 'Processing...' : 'Subscribe'}
