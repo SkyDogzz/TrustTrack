@@ -1,6 +1,6 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-import { signIn, useSession } from 'next-auth/react';
+import React, { useState } from 'react';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema } from '@/lib/validationSchemas';
@@ -12,7 +12,6 @@ export default function LoginPage() {
     const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm<LoginFormData>({
         resolver: zodResolver(loginSchema)
     });
-    const { data: session, status } = useSession();
     const [error, setFormError] = useState<string>('');
 
     const onSubmit = async (data: LoginFormData) => {
@@ -43,12 +42,6 @@ export default function LoginPage() {
             console.error('Error logging in', error);
         }
     };
-
-    useEffect(() => {
-        if (status === "authenticated") {
-            window.location.href = "/";
-        }
-    }, [status, session]);
 
     return (
         <div className='flex justify-center items-center h-screen'>

@@ -1,20 +1,9 @@
 "use client"
 
 import { useSession } from "next-auth/react"
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
 
 export default function DashboardPage() {
     const { data: session, status } = useSession()
-    const router = useRouter()
-
-    useEffect(() => {
-        if (status !== "authenticated") {
-            router.push('/')
-        }
-        console.log(session)
-    }, [router, status])
-
 
     return (
         <div className="text-black dark:text-white max-w-7xl mx-auto mb-20">
