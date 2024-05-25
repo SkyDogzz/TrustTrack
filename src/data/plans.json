@@ -17,6 +17,7 @@
                 "Analyse de sentiment",
                 "Rapports détaillés"
             ],
+            "priceId": "price_1PJvgJJmI762TPw3thBEPeYf",
             "popular": true
         },
         {
@@ -26,7 +27,8 @@
                 "Toutes les fonctionnalités Pro",
                 "Support prioritaire",
                 "Personnalisation avancée"
-            ]
+            ],
+            "priceId": "price_1PJvhRJmI762TPw326H1sMba"
         }
     ],
     "annual": [
@@ -47,6 +49,7 @@
                 "Analyse de sentiment",
                 "Rapports détaillés"
             ],
+            "priceId": "price_1PJviVJmI762TPw3fAeoCGCQ",
             "popular": true
         },
         {
@@ -56,7 +59,8 @@
                 "Toutes les fonctionnalités Pro",
                 "Support prioritaire",
                 "Personnalisation avancée"
-            ]
+            ],
+            "priceId": "price_1PJvj2JmI762TPw3nDo19zap"
         }
     ]
 }

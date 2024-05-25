@@ -6,6 +6,7 @@ type PricingPlan = {
     title: string;
     price: string;
     features: string[];
+    priceId?: string;
     popular?: boolean;
 };
 
@@ -23,11 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         const { paymentMethodId, planType, planName, email } = req.body;
 
-        console.log('paymentMethodId:', paymentMethodId, 'planType:', planType, 'planName:', planName, 'email:', email);
-
         const selectedPlan = (pricingPlans as PricingPlans)[planType].find((plan: PricingPlan) => plan.title === planName);
-
-        console.log('selectedPlan:', selectedPlan);
 
         if (!selectedPlan) {
             return res.status(400).json({ error: 'Invalid plan selected' });
@@ -46,14 +43,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 customer: customer.id,
                 items: [
                     {
-                        price_data: {
-                            currency: 'usd',
-                            product: selectedPlan.title,
-                            unit_amount: parseInt(selectedPlan.price) * 100,
-                            recurring: {
-                                interval: planType === 'monthly' ? 'month' : 'year',
-                            },
-                        },
+                        price: selectedPlan.priceId,
                     },
                 ],
                 expand: ['latest_invoice.payment_intent'],
@@ -69,7 +59,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             });
         } catch (error) {
             const errorMessage = (error as Error).message;
-            console.log('Error:', errorMessage);
             res.status(500).json({ error: errorMessage });
         }
     } else {

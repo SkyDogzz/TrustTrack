@@ -23,7 +23,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         res.status(200).json({ success: true, paymentIntent });
     } catch (error) {
-        console.log('Error:', error);
         res.status(500).json({ success: false, error: error });
     }
   } else {
