@@ -10,6 +10,7 @@ services:
       - NODE_ENV=development
     depends_on:
       - db
+    restart: always
   db:
     image: postgres
     ports:
