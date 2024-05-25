@@ -1,18 +1,21 @@
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import axios from 'axios';
+import { Session } from 'next-auth';
+import { signIn } from 'next-auth/react';
 
 interface SubscriptionFormProps {
     planType: string;
     planName: string;
-    email: string | undefined;
+    session: Session | null;
 }
 
-export default function SubscriptionForm({ planType, planName, email }: SubscriptionFormProps) {
+export default function SubscriptionForm({ planType, planName, session }: SubscriptionFormProps) {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -36,17 +39,24 @@ export default function SubscriptionForm({ planType, planName, email }: Subscrip
             return;
         }
 
-        const { id } = paymentMethod;
+        const { id: paymentMethodId } = paymentMethod;
 
         try {
-            const response = await axios.post('/api/subscribe', {
-                paymentMethodId: id,
+            if (!session) {
+                const { data } = await axios.post('/api/register', {
+                    email,
+                });
+                await signIn('credentials', { email, password: data.password });
+            }
+
+            const { data } = await axios.post('/api/subscribe', {
+                paymentMethodId,
                 planType,
                 planName,
                 email,
             });
 
-            if (response.data.success) {
+            if (data.success) {
                 alert('Subscription successful!');
             } else {
                 setError('Subscription failed.');
@@ -60,6 +70,15 @@ export default function SubscriptionForm({ planType, planName, email }: Subscrip
 
     return (
         <form onSubmit={handleSubmit}>
+            {!session && (
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+            )}
             <CardElement />
             <button type="submit" disabled={!stripe || loading}>
                 {loading ? 'Processing...' : 'Subscribe'}
@@ -67,4 +86,4 @@ export default function SubscriptionForm({ planType, planName, email }: Subscrip
             {error && <div>{error}</div>}
         </form>
     );
-}
+};

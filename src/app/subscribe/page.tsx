@@ -5,17 +5,15 @@ import { stripePromise } from '@/lib/stripe';
 import SubscriptionForm from '@/components/SubscriptionForm';
 import { useSession } from 'next-auth/react';
 
-const Subscribe = () => {
-    const { data: session } = useSession();
+export default function Subscribe() {
+    const { data: session, status } = useSession();
 
     const planType = 'monthly';
     const planName = 'Pro';
 
     return (
         <Elements stripe={stripePromise}>
-            <SubscriptionForm planType={planType} planName={planName} email={session?.user?.email} />
+            <SubscriptionForm planType={planType} planName={planName} session={session} />
         </Elements>
     );
 };
-
-export default Subscribe;
