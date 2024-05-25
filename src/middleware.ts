@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 
-const protectedPaths = ['/subscribe', '/dashboard', '/profil'];
+const protectedPaths = ['/dashboard', '/profil'];
 const authPaths = ['/', '/login', '/register'];
 
 export const config = {
@@ -14,8 +14,6 @@ export async function middleware(req: NextRequest) {
 
     const isAuthPath = authPaths.includes(req.nextUrl.pathname);
     const isProtectedPath = protectedPaths.includes(req.nextUrl.pathname);
-
-    console.log('isAuthPath', isAuthPath, 'isProtectedPath', isProtectedPath, 'path', req.nextUrl.pathname);
 
     if (!token && isProtectedPath) {
         return NextResponse.redirect(new URL('/', req.url));
